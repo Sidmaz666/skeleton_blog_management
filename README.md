@@ -22,7 +22,7 @@ A minimal Blog Management System (CMS). No Front-End Work or Style has been done
 6. `Edit & Delete Blogs ~ Only for Admin & Publisher/ Writer Can only Add new Blogs`
 7. `Add/Delete/Edit Categories, tags ~ For Admin Only`
 
-## Third-Party JS Lib Used
+## Third-Party Usage
 
 1. `TinyMCE` -> `As an Advanced Text Editor. ` ~ <a href="https://www.tiny.cloud/">Visit</a>
 2. `TomSelect` -> `To select Tags. ` ~ <a href="https://tom-select.js.org/">Visit</a>
