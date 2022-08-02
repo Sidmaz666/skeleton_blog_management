@@ -2,6 +2,11 @@
 
 A minimal Blog Management System (CMS). No Front-End Work or Style has been done so anyone can style and customize it to their own liking :) Check the Config Flie!
 
+## Routes
+
+1. `/` -> `Main Site`
+2. `admin/` -> `Admin, Writer, Publisher Dashboard.` 
+
 ## Important Commands To Run
 
 1. `npm i` -> `To install tailwindcss,postcss-cli and autoprefixer`
