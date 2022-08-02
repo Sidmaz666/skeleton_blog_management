@@ -10,6 +10,7 @@ A minimal Blog Management System (CMS). No Front-End Work or Style has been done
 ## Important Commands To Run
 
 1. `npm i` -> `To install tailwindcss,postcss-cli and autoprefixer`
+2. `npm run watch:css` -> `Start Tailwindcss Class Compilation to css/style.css`
 
 ## Customization
 
