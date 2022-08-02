@@ -24,8 +24,8 @@ A minimal Blog Management System (CMS). No Front-End Work or Style has been done
 
 ## Third-Party Usage
 
-1. `TinyMCE` -> `As an Advanced Text Editor. ` ~ <a href="https://www.tiny.cloud/">Visit</a>
-2. `TomSelect` -> `To select Tags. ` ~ <a href="https://tom-select.js.org/">Visit</a>
+1. `TinyMCE` -> `As an Advanced Text Editor. `  - <a href="https://www.tiny.cloud/">Visit</a>
+2. `TomSelect` -> `To select Tags. `  -  <a href="https://tom-select.js.org/">Visit</a>
 3. `Tailwindcss` -> `To apply styles except on the Blog Page`
 
 ## Note
