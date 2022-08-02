@@ -5,7 +5,7 @@ A minimal Blog Management System (CMS). No Front-End Work or Style has been done
 ## Routes
 
 1. `/` -> `Main Site`
-2. `admin/` -> `Admin, Writer, Publisher Dashboard.` 
+2. `/admin/` -> `Admin, Writer, Publisher Dashboard.` 
 
 ## Important Commands To Run
 
