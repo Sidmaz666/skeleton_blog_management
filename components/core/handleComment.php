@@ -16,7 +16,11 @@ if(
   $insert_sql = "INSERT INTO comments(blog_id, username, email, comment) VALUES ('$id','$name','$email','$comment')";
 
 	
-  mysqli_query($connection,$insert_sql);
+	$regis_comment = mysqli_query($connection,$insert_sql);
+
+  if($regis_comment){
+    return true;
+  } else return false;
 
 } 
 

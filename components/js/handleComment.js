@@ -33,11 +33,14 @@ form.setAttribute("method", "post");
 
 function postComment(blog_id,email,username,comment){
 
-const params = {action : 'add_comment' , email : email, blog_id : blog_id,
+  if(email.length > 0 && username.length > 0 && comment.length > 0){
+  const params = {action : 'add_comment' , email : email, blog_id : blog_id,
   name: username, msg: comment};
 
   setPost(params)
 
-}
+  }
 
+
+}
 

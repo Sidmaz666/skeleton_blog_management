@@ -72,7 +72,7 @@ if(
 
 
 	  
-	$update_sql = "UPDATE blogs SET blog_title = '$blog_title' , blog_data = '$blog_data' , blog_description = '$blog_desc' , blog_category = '$blog_category' , blog_tags = '$blog_tags', last_updated_by = '$edited_by' WHERE blog_id = '$blog_id' ";
+	$update_sql = "UPDATE blogs SET blog_title = '$blog_title' , blog_data = '$blog_data' , blog_description = '$blog_desc' , blog_category = '$blog_category' , blog_tags = '$blog_tags', last_updated_by = '$edited_by' , blog_image ='$blog_image' WHERE blog_id = '$blog_id' ";
 
 	  $update_query = mysqli_query($connection,$update_sql);
 	

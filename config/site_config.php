@@ -4,26 +4,28 @@ date_default_timezone_set("Asia/Kolkata");
 
 
 // Name should match with the Site Root Folder Important!
-$what_blog = "personal_blog";
+$what_blog = "justmyblogs";
 // Site Title
-$site_title = "Welcome to Blogs";
+$site_title = "Welcome to Just-Blogs";
 // Global CSS/Tailwind CSS Styles Not Applied to the Blog Page.
 $site_css_url_normal_home = "css/style.css";
 $site_css_url_admin = "../css/style.css";
 // Custom Stylesheet To style Blog Page
 $site_css_url_normal_blog = "css/blogLayout.css";
 
+//$site_logo_main=""
+
 // Social Media Links For Site Widget
 $widget_facebook_link = "";
 $widget_instagram_link = "";
 $widget_twitter_link = "";
-$widget_github_link = "";
+$widget_github_link = "https://github.com/sidmaz666";
 
 // Database Configuration
 $servername = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "blogs_db";
+$dbusername = "	id19422441_sidmaz666";
+$dbpassword = "1%^x^)Xd^=$=~Yb7";
+$dbname = "id19422441_blogz";
 
 
 global $servername;
