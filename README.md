@@ -40,7 +40,7 @@ The codebase is very minimal, anything you want can be achieved it requires litt
 
 ## Live Demo
 
-<a href="https://justmyblogs.000webhostapp.com/justmyblogs/" target="_blank">Visit </a>
+<a href="https://justmyblogs.000webhostapp.com/justmyblogs/" >Visit </a>
 
 `Admin Route` -> `https://justmyblogs.000webhostapp.com/justmyblogs/admin`
 
