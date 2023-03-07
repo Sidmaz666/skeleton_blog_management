@@ -34,7 +34,9 @@ A minimal Blog Management System (CMS). No Front-End Work or Style has been done
 2. `TomSelect` -> `To select Tags. `  -  <a href="https://tom-select.js.org/">Visit</a>
 3. `Tailwindcss` -> `To apply styles except on the Blog Page`
 
-## Note
+## Live Demo
 
-The codebase is very minimal, anything you want can be achieved it requires little knowledge of web development. Since it is a minmal project you will find many thing lacking such as as a writer you can't re-edit your own posts, however such restrictions are good for people to adapt. 😄
+<a href="https://justmyblogs.000webhostapp.com/justmyblogs/" >Visit </a>
+
+`Admin Route` -> `https://justmyblogs.000webhostapp.com/justmyblogs/admin`
 
