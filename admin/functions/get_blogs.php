@@ -59,3 +59,22 @@ function get_all_blog($connection){
 }
 
 
+function get_writer_blog($connection,$user){
+  $get_data_query = mysqli_query($connection,"SELECT *, ROW_NUMBER() OVER() AS ROW_NUM FROM blogs WHERE role = 'writer' AND username='$user'");
+
+  if($get_data_query){
+
+    $check_existance = mysqli_num_rows($get_data_query);
+    if($check_existance > 0){
+
+	$fetch_all_blog = mysqli_fetch_all($get_data_query,MYSQLI_ASSOC);
+      
+	return json_encode($fetch_all_blog);
+
+    }
+    
+  }
+
+}
+
+

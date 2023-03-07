@@ -842,7 +842,7 @@ this.innerText == 'View Tag List' ? this.innerText = 'Hide Tag List' : this.inne
 <?php 
 	  if(
 	    $get_user_data["role"] == "admin" ||
-	    $get_user_data['role'] == "publisher"
+	    $get_user_data['role'] == "publisher" || $get_user_data['role'] == 'writer'
 	  )
 	  {
 
@@ -1133,7 +1133,12 @@ p-2
   </tr>
 
 <?php
+if($get_user_data['role'] == 'writer'){
+$get_blogs = json_decode(get_writer_blog($connection,$get_user_data['username']));
+      } else {
 $get_blogs = json_decode(get_all_blog($connection));
+
+}
 foreach($get_blogs as $blog){
 ?>
 
@@ -1255,6 +1260,7 @@ foreach($get_blogs as $blog){
 	border-2
 	"
 >
+<?php if($get_user_data['role'] == 'admin' || $get_user_data['role'] == 'writer'){ ?>
 	<button 
 	class="
 	p-1
@@ -1263,7 +1269,8 @@ foreach($get_blogs as $blog){
 	rounded-full
 	"
 onclick="edit_blog('<?=$blog->blog_id;?>','<?=$get_user_data['username'];?>','<?=$get_user_data['role'];?>')">EDIT</button>
-	<!-- APPROVE -->
+<?php } if($get_user_data['role'] == 'admin' || $get_user_data['role'] =='publisher'){ ?>	
+<!-- APPROVE -->
 	<?php
   	if($blog->approved_status == "FALSE")
 	{ ?>
@@ -1279,7 +1286,7 @@ onclick="edit_blog('<?=$blog->blog_id;?>','<?=$get_user_data['username'];?>','<?
 	"
  onclick="publish_blog('<?=$blog->blog_id;?>','<?=$get_user_data['username'];?>','<?=$get_user_data['role'];?>','TRUE')">PUBLISH</button>
 
-	<?php
+<?php	
 	} else {
 	?>
 
@@ -1296,6 +1303,8 @@ onclick="edit_blog('<?=$blog->blog_id;?>','<?=$get_user_data['username'];?>','<?
 
 	<?php
 	} 
+	}
+	  if($get_user_data['role'] == 'admin'){
 	?>
 
 	  <button
@@ -1311,7 +1320,7 @@ onclick="edit_blog('<?=$blog->blog_id;?>','<?=$get_user_data['username'];?>','<?
 	</td>
 	</tr>
 
-<?php }  ?>
+<?php }}  ?>
 
 </table>
 

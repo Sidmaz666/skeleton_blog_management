@@ -44,7 +44,8 @@ if (
 	$check_role = json_decode(StringInfo($_POST['role'],'role',5));
 	$check_password = json_decode(StringInfo($_POST['password'],'password',8));
 
-	$check_email_already_registered = DatainDB($connection,$_POST['email'],'email');
+	$check_email_already_registered = DatainDB($connection,'email',$_POST['email'],'email');
+	$check_username_already_registered = DatainDB($connection,'username',$_POST['email'],'username');
 
 //	print_r(json_encode(array($check_username,$check_firstname,$check_lastname,$check_email,$check_role,$check_password,$check_email_already_registered)));	
 	if(
@@ -54,7 +55,8 @@ if (
 	  $check_email->error_->total_error == 0 && 
 	  $check_role->error_->total_error == 0 &&
 	  $check_password->error_->total_error == 0 &&
-	  $check_email_already_registered == false
+	  $check_email_already_registered == false &&
+	  $check_username_already_registered == false
 	){
 
 	  $username = $check_username->new_data;
@@ -68,6 +70,8 @@ if (
 	  registerUser($connection,$username,$first_name,$last_name,$email,$role,$password,$is_admin_role);
 
 
+	} else {
+	  echo "User is Probably Already Registered!";
 	}
 
 

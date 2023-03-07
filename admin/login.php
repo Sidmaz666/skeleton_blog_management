@@ -1,6 +1,6 @@
 
 
-<div class="text-left bg-white shadow-lg">
+<div class="text-left bg-white shadow-lg" style="margin-top:200px;margin-bottom: 200px;">
 <h3 class="text-2xl font-semibold text-center p-2 bg-black text-white border-t-4 border-blue-500 ">Login ~ </h3>
 
 
@@ -24,22 +24,3 @@ type="submit">Login</button>
 </form>
 </div>
 
-
-<!--
-
-
-<div class="">
-<form action="" method="POST">
-<label for="">
-username
-<input type="text" name="username">
-</label>
-<label for="">
-password
-<input type="password" name="password">
-</label>
-<button type="submit" name="loginBtn" >Login</button>
-</form>
-</div>
-
---->

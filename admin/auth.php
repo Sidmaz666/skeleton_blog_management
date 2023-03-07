@@ -36,7 +36,7 @@ text-black
 
 <div
 class="
-h-screen
+p-5
 flex
 justify-center
 items-center
