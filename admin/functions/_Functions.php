@@ -93,8 +93,7 @@ if(isset($_POST['action']) &&
 
 if(isset($_POST['action']) &&
   $_POST['action'] == "edit_post" &&
-  $_POST['field'] == "blog" &&
-  $_POST['role'] == "admin" || $_POST['role'] == "publisher"
+  $_POST['field'] == "blog" 
 ){
 
   $blog_id=$_POST['blog_id'];

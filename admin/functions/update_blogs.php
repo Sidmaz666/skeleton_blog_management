@@ -12,11 +12,13 @@ function insertNewBlog(
   $_writer_role
 ){
 
+  $blog_content = mysqli_real_escape_string($connection,$blog_content);
 
   if(
   !empty($blog_title) &&
   !empty($blog_content) &&
-  !empty($blog_category) 
+  !empty($blog_category) &&
+  $_writer_role !== 'publisher' 
   ) {
 
     $blog_tags = implode(",",$blog_tags);
@@ -43,20 +45,17 @@ function insertNewBlog(
 	} else {
 	  return false;
 	}
-
-
+  } else {
+    echo "Unauthorized/Not All Information is Provided!";
   }
 
 }
 
 if(
-  isset($_POST['edit_blog_submitBtn']) &&
-  $_POST['edit_blog_user_role'] == "admin" ||  
-  $_POST['edit_blog_user_role'] == "publisher"  
-	){
+  isset($_POST['edit_blog_submitBtn'])){
 
 	  $blog_title = trim($_POST['edit_blog_title']);
-	  $blog_data = trim($_POST['edit_blog_content']);
+	  $blog_data = mysqli_real_escape_string($connection,trim($_POST['edit_blog_content']));
 	  $blog_desc = trim($_POST['edit_blog_description']);
 	  $blog_category = $_POST['edit_blog_category'];
 	  $blog_tags = implode(",",$_POST['edit_blog_tags']);
@@ -72,7 +71,7 @@ if(
 
 
 	  
-	$update_sql = "UPDATE blogs SET blog_title = '$blog_title' , blog_data = '$blog_data' , blog_description = '$blog_desc' , blog_category = '$blog_category' , blog_tags = '$blog_tags', last_updated_by = '$edited_by' WHERE blog_id = '$blog_id' ";
+	$update_sql = "UPDATE blogs SET blog_title = '$blog_title' , blog_data = '$blog_data' , blog_description = '$blog_desc' , blog_category = '$blog_category' , blog_tags = '$blog_tags', last_updated_by = '$edited_by' , blog_image ='$blog_image' WHERE blog_id = '$blog_id' ";
 
 	  $update_query = mysqli_query($connection,$update_sql);
 	
