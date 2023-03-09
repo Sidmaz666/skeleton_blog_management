@@ -40,3 +40,5 @@ A minimal Blog Management System (CMS). No Front-End Work or Style has been done
 
 `Admin Route` -> `https://justmyblogs.000webhostapp.com/justmyblogs/admin`
 
+`username: sidmaz666`
+`password: sidmaz666`
