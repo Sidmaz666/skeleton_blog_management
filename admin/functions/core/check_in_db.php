@@ -1,13 +1,14 @@
 <?php
-function DatainDB($connection,$type,$value){
+
+function DatainDB($connection,$table,$type,$value){
 	$query = mysqli_query($connection,
-	"SELECT * FROM users WHERE $type = '$value'"
+	"SELECT * FROM $table WHERE $type = '$value'"
 	);
 
-	if(mysqli_num_rows($query) > 0){
-	  return true;
+	if(mysqli_num_rows($query) > 0) {
+	  return 'TRUE';
 	} else {
-	  return false;
+	  return 'FALSE';
 	}
 
 }

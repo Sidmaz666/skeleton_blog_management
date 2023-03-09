@@ -112,5 +112,33 @@ if(isset($_POST['action']) &&
 
 }
 
+if($_POST['action'] && 
+   $_POST['action'] == "approve_user" &&
+   $_POST['field'] == "user" && !empty($_POST['user_id'])
+){
+
+  $user_id = $_POST['user_id'];
+
+  $get_data_query = mysqli_query($connection,"SELECT * FROM request_users WHERE id = '$user_id' ");
+
+    $check_existance = mysqli_num_rows($get_data_query);
+    if($check_existance > 0){
+
+	$fetch_user = mysqli_fetch_all($get_data_query,MYSQLI_ASSOC);
+	$firstname = $fetch_user[0]["first_name"];
+	$lastname = $fetch_user[0]["last_name"];
+	$username = $fetch_user[0]["username"];
+	$email = $fetch_user[0]["email"];
+	$password =$fetch_user[0]["password"];
+	$role = $fetch_user[0]["role"];
+
+        mysqli_query($connection,
+	  "INSERT INTO users(first_name,last_name,username,email,role,password) VALUES(
+	    '$firstname','$lastname','$username','$email','$role','$password')");
+
+ 	mysqli_query($connection,"DELETE FROM request_users WHERE id = '$user_id' ");
+
+    }
+}
 
 

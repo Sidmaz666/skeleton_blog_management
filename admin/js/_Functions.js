@@ -65,6 +65,16 @@ form.setAttribute("method", "post");
 
 }
 
+function approve_user(id){
+  const params = {
+    action : 'approve_user',
+    field: 'user',
+    user_id : id
+  }	
+
+  setPost(params)
+
+}
 
 function delete_category(id,category_name){
 

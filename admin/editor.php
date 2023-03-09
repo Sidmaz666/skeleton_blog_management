@@ -287,8 +287,6 @@ this.innerText == '+' ? this.innerText = '-' : this.innerText = '+'
 >+</button>
 </div>
 
-
-
 <?php } ?>
 
 <!-- 	ADMIN SECTION 
@@ -842,12 +840,10 @@ this.innerText == 'View Tag List' ? this.innerText = 'Hide Tag List' : this.inne
 <?php 
 	  if(
 	    $get_user_data["role"] == "admin" ||
-	    $get_user_data['role'] == "publisher" || $get_user_data['role'] == 'writer'
+	    $get_user_data['role'] == "publisher" ||
+	    $get_user_data['role'] == 'writer'
 	  )
 	  {
-
-
-
 
 ?>
 
@@ -1269,7 +1265,10 @@ foreach($get_blogs as $blog){
 	rounded-full
 	"
 onclick="edit_blog('<?=$blog->blog_id;?>','<?=$get_user_data['username'];?>','<?=$get_user_data['role'];?>')">EDIT</button>
-<?php } if($get_user_data['role'] == 'admin' || $get_user_data['role'] =='publisher'){ ?>	
+
+<?php 
+	} 
+if($get_user_data['role'] == 'admin' || $get_user_data['role'] =='publisher'){ ?>	
 <!-- APPROVE -->
 	<?php
   	if($blog->approved_status == "FALSE")
@@ -1357,14 +1356,218 @@ this.innerText == 'View Blogs' ? this.innerText = 'Hide Blogs' : this.innerText 
 </div>
 
 </div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <?php }?>
 
 
+
+
+<div class="
+p-2
+hidden
+"
+id="user_list_div"
+>
+
+<table
+class="
+m-2
+w-full
+text-xl
+"
+>
+  <tr
+class="
+bg-black
+text-white
+text-2xl
+p-2
+"
+	>
+    <th
+class="
+p-2
+border-2
+"
+	>#No</th>
+    <th
+class="
+p-2
+border-2
+"
+	>Userame</th>
+    <th
+class="
+p-2
+border-2
+"
+	>Email</th>
+    <th
+class="
+p-2
+border-2
+"
+	>Name</th>
+    <th
+class="
+p-2
+border-2
+"
+	>Role</th>
+
+    <th
+class="
+p-2
+border-2
+"
+	>Options</th>
+  </tr>
+
+<?php
+if($get_user_data['role'] == 'admin'){
+$get_requested_users = json_decode(get_requested_users($connection));
+foreach($get_requested_users as $user){
+?>
+
+	<tr
+      class="
+      text-xl
+      text-white
+      p-2
+	bg-[#263238]
+      "
+>
+	<td
+	class="
+	p-2
+	font-bold
+	text-center
+	border-2
+	"
+	>
+	  <?=$user->ROW_NUM;?>
+	 </td>
+	 <td
+	class="
+	p-2
+	font-bold
+	text-center
+	border-2
+	"
+>
+
+	 <div>
+
+	      <?=$user->username;?>
+
+	    </div>
+
+	</td>
+	  <td
+	class="
+	p-2
+	font-bold
+	text-center
+	border-2
+	"
+	>
+	    <div>
+
+		<?=$user->email;?>
+
+	  </div>
+	</td>
+	  <td
+	class="
+	p-2
+	font-bold
+	text-center
+	border-2
+	"
+	>
+	    <div>
+
+		<?=$user->first_name." ".$user->last_name;?>
+
+	  </div>
+	</td>
+	  <td
+	class="
+	p-2
+	font-bold
+	text-center
+	border-2
+	"
+	>
+	    <div>
+
+		<?=$user->role;?>
+
+	  </div>
+	</td>
+	<td
+	class="
+	p-2
+	font-bold
+	text-center
+	border-2
+	"
+	>
+	
+<button 
+class="
+p-1
+bg-white
+text-black
+rounded-full
+"
+onclick="approve_user('<?=$user->id;?>')"
+>
+Approve
+</button>
+	</td>
+	</tr>
+
+<?php }  ?>
+
+</table>
+
+</div>
+
+
+<div
+class="
+flex
+justify-center
+items-center
+m-5
+"
+>
+<button
+class="
+p-2
+text-3xl
+font-bold
+font-mono
+flex
+justify-center
+items-center
+w-full
+bg-gray-300
+rounded-md
+shadow-md
+"
+onclick="
+document.getElementById('user_list_div').classList.toggle('hidden')
+this.innerText == 'View Requested Users' ? this.innerText = 'Hide Requested Users' : this.innerText = 'View Requested Users'
+"
+>View Requested Users</button>
+</div>
+
+<?php } ?>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
