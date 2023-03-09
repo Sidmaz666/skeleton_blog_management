@@ -6,6 +6,11 @@ const createTextarea = document.createElement('textarea')
 
 createTextarea.id = elm.id
 
+createTextarea.style.color = '#FFFFFF'
+createTextarea.style.backgroundColor = '#263238'
+createTextarea.style.padding = '0.5rem'
+createTextarea.style.border = '2px solid white'
+
 createTextarea.textContent = initial_value  
 
 elm.replaceWith(createTextarea)
@@ -22,6 +27,8 @@ function Textarea2Div(elm,id){
 
 const createDiv = document.createElement('div')
 createDiv.id = id
+createDiv.style.color = '#FFFFFF'
+createDiv.style.background = '#263238'
 
 createDiv.textContent = elm.value 
 
@@ -58,6 +65,16 @@ form.setAttribute("method", "post");
 
 }
 
+function approve_user(id){
+  const params = {
+    action : 'approve_user',
+    field: 'user',
+    user_id : id
+  }	
+
+  setPost(params)
+
+}
 
 function delete_category(id,category_name){
 

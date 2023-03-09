@@ -6,23 +6,19 @@ include_once 'core/check_in_db.php';
 include_once '../config.php';
 
 
-function registerUser($conn,$username,$firstname,$lastname,$email,$role,$password,$is_admin){
+function registerUser($conn,$username,$firstname,$lastname,$email,$role,$password){
   if($conn){
 
-    if(!$is_admin && $role == "admin"){
-     $role = "writer";
-    }
-
-   $user_registration = mysqli_query($conn,"INSERT INTO users(first_name,last_name,username,email,role,password) VALUES('$firstname','$lastname','$username','$email','$role','$password')");
+   $user_registration = mysqli_query($conn,"INSERT INTO request_users(first_name,last_name,username,email,role,password) VALUES('$firstname','$lastname','$username','$email','$role','$password')");
 
    if($user_registration){
 
-     echo "$username Registered!";
+     echo "$username has Requested For an Account. Please wait for Admin Approval!";
    
    } else {
    
    
-     echo "Unable to Register $username!";
+     echo "Unable to request an account for $username!";
    
    
    }
@@ -44,19 +40,13 @@ if (
 	$check_role = json_decode(StringInfo($_POST['role'],'role',5));
 	$check_password = json_decode(StringInfo($_POST['password'],'password',8));
 
-	$check_email_already_registered = DatainDB($connection,'email',$_POST['email'],'email');
-	$check_username_already_registered = DatainDB($connection,'username',$_POST['email'],'username');
-
-//	print_r(json_encode(array($check_username,$check_firstname,$check_lastname,$check_email,$check_role,$check_password,$check_email_already_registered)));	
 	if(
 	  $check_username->error_->total_error == 0 && 
 	  $check_firstname->error_->total_error == 0 &&
 	  $check_lastname->error_->total_error == 0 &&
 	  $check_email->error_->total_error == 0 && 
 	  $check_role->error_->total_error == 0 &&
-	  $check_password->error_->total_error == 0 &&
-	  $check_email_already_registered == false &&
-	  $check_username_already_registered == false
+	  $check_password->error_->total_error == 0 
 	){
 
 	  $username = $check_username->new_data;
@@ -67,11 +57,30 @@ if (
 	  $password = MD5($check_password->new_data);
 
 	
-	  registerUser($connection,$username,$first_name,$last_name,$email,$role,$password,$is_admin_role);
+	$check_email_already_registered_u = DatainDB($connection,'users','email',$email);
+	$check_username_already_registered_u = DatainDB($connection,'users','username',$username);
+	$check_email_already_registered_ru = DatainDB($connection,'request_users','email',$email);
+	$check_username_already_registered_ru = DatainDB($connection,'request_users','username',$username);
+
+
+	if(
+	  $check_email_already_registered_u == 'FALSE' && $check_email_already_registered_ru == 'FALSE' &&
+	  $check_username_already_registered_u == 'FALSE' && $check_username_already_registered_ru == 'FALSE'
+	)
+	{
+
+	  registerUser($connection,$username,$first_name,$last_name,$email,$role,$password);
+	  echo "$username has requested for an account. Please Wait for ADMIN Approval!";
+
+	} else {
+	  echo "User is Probably Already Registered or have send a request for account!";
+	}
 
 
 	} else {
-	  echo "User is Probably Already Registered!";
+
+	  echo "Error While Validating User Inputs!";
+	
 	}
 
 
